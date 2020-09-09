@@ -389,18 +389,19 @@
     </footer>
 
     <script>
+        //grabbing elements by their ID
         $(function () {
             let headerElem = $('header');
             let logo = $('#logo');
             let navMenu = $('#nav-menu');
             let navToggle = $('#nav-toggle');
-
+           //initializing carousle of properties
            $('#properties-slider').slick({
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                prevArrow: '<a href="#" class="slick-arrow slick-prev">previous</a>',
-                nextArrow: '<a href="#" class="slick-arrow slick-next">next</a>',
-                responsive: [
+                slidesToShow: 4, //show 4 items at a time
+                slidesToScroll: 1, //scroll 1 item at a time
+                prevArrow: '<a href="#" class="slick-arrow slick-prev">previous</a>', //prev button
+                nextArrow: '<a href="#" class="slick-arrow slick-next">next</a>', //next button
+                responsive: [ //media queries
                     {
                         breakpoint: 1100,
                         settings: {
@@ -427,30 +428,30 @@
                     }
                 ]
            });
-
-           $('#testimonials-slider').slick({
+           //initializing testimonials slider
+           $('#testimonials-slider').slick({ 
                 infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
+                slidesToShow: 1, //shows 1 slide at a time
+                slidesToScroll: 1, //scroll 1 item at a time
                 prevArrow: '<a href="#" class="slick-arrow slick-prev"><</a>',
                 nextArrow: '<a href="#" class="slick-arrow slick-next">></a>'
            });
-
+           //positions nav to the right of the page
            navToggle.on('click', () => {
                navMenu.css('right', '0');
            });
-
+           //closes nav menu when click on the x
            $('#close-flyout').on('click', () => {
                 navMenu.css('right', '-100%');
            });
-
+           //closes flyout nav menu when click on any where on the page besides the actual menu
            $(document).on('click', (e) => {
                let target = $(e.target);
                if (!(target.closest('#nav-toggle').length > 0 || target.closest('#nav-menu').length > 0)) {
                    navMenu.css('right', '-100%');
                }
            });
-
+           //when user scrolls the page nav bar changes some of its css properties
            $(document).scroll(() => {
                let scrollTop = $(document).scrollTop();
 
